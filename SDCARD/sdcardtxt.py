@@ -31,9 +31,10 @@ os.mount(sd,'/sd')
 print(os.listdir('/sd'))
 
 # Create / Open a file in write mode.
-# Write mode creates a new file.
-# If  already file exists. Then, it overwrites the file.
+# Make the name of the file the unix timestamp
+
 file = open("/sd/sample.txt","w")
+
 
 # Write sample text
 for i in range(20000):
