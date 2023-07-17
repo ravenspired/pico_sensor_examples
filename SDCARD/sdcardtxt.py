@@ -9,6 +9,7 @@
 from machine import Pin, SPI
 import sdcard
 import os
+import time
  
 #Initialize the onboard LED as output
 led = machine.Pin(25,machine.Pin.OUT)
@@ -18,7 +19,7 @@ def BlinkLED(timer_one):
     led.toggle()
     
 # Initialize the SD card
-spi=SPI(1,baudrate=40000000,sck=Pin(10),mosi=Pin(11),miso=Pin(12))
+spi=SPI(1,baudrate=10000000,sck=Pin(10),mosi=Pin(11),miso=Pin(12))
 sd=sdcard.SDCard(spi,Pin(13))
 
 # Create a instance of MicroPython Unix-like Virtual File System (VFS),
@@ -37,9 +38,10 @@ file = open("/sd/sample.txt","w")
 
 
 # Write sample text
-for i in range(20000):
+for i in range(2000):
     file.write("Sample text = %s\r\n" % i)
     print(i)
+    time.sleep(0.001)
     
 # Close the file
 file.close()

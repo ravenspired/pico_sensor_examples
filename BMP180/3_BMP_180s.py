@@ -4,7 +4,7 @@ from machine import Pin, I2C, SoftI2C
 from bmp085 import BMP180
 import time
 
-i2c1 = SoftI2C(sda = Pin(5), scl = Pin(4), freq = 100000) 
+i2c1 = SoftI2C(sda = Pin(9), scl = Pin(8), freq = 100000) 
 bmp1 = BMP180(i2c1)        
 bmp1.oversample = 2
 bmp1.sealevel = 101325

@@ -11,6 +11,14 @@ class MHZ19BSensor:
         self.lights = 1
         self.co2_threshold = int(co2_threshold)
 
+    def enable_auto_calibration(self):
+        self.uart.write(b'\xff\x01\x79\xa0\x00\x00\x00\x00\xe6')
+        time.sleep(1)
+    
+    def disable_auto_calibration(self):
+        self.uart.write(b'\xff\x01\x79\0x00\x00\x00\x00\x00\xe6')
+        time.sleep(1)
+        
     # measure CO2
     def measure(self):
         while True:
@@ -18,7 +26,7 @@ class MHZ19BSensor:
             self.uart.write(b'\xff\x01\x86\x00\x00\x00\x00\x00\x79')
 
             # a little delay to let the sensor measure CO2 and send the data back
-            time.sleep(1)  # in seconds
+            time.sleep(.1)  # in seconds
 
             # read and validate the data
             buf = self.uart.read(9)
@@ -33,7 +41,8 @@ class MHZ19BSensor:
 
 
         co2 = buf[2] * 256 + buf[3]
-        print('co2         = %.2f' % co2)
+        return co2
+        #print('co2         = %.2f' % co2)
 
 
     # check data returned by the sensor
@@ -53,11 +62,16 @@ class MHZ19BSensor:
 
 
 
-mySensor1 = MHZ19BSensor(4, 5, 1, 5)
-mySensor2 = MHZ19BSensor(12, 13, 0, 5)
+mySensor1 = MHZ19BSensor(0, 1, 0, 5)
+mySensor2 = MHZ19BSensor(4, 5, 1, 5)
+
+mySensor1.disable_auto_calibration()
+mySensor2.disable_auto_calibration()
+
 while True:
-    print("Sensor 1")
-    mySensor1.measure()
-    print("Sensor 2")
-    mySensor2.measure()
+    print("===")
+    print("Sensor 1:", mySensor1.measure())
+    print("Sensor 2:", mySensor2.measure())
     time.sleep(1)
+
+
