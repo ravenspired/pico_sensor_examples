@@ -1,4 +1,23 @@
-#Code for running the BMP180 sensor
+# Code to get the pressure, temperature, and altitude from three BMP180 sensors.
+# This code gets these values from three sensors by taking readings many times and averaging them for each sensor, and prints them on the screen.
+
+# Sensor 1: BMP180
+# VIN: 3.3V
+# GND: GND
+# SCL: GP8
+# SDA: GP9
+
+# Sensor 2: BMP180
+# VIN: 3.3V
+# GND: GND
+# SCL: GP2
+# SDA: GP3
+
+# Sensor 3: BMP180
+# VIN: 3.3V
+# GND: GND
+# SCL: GP6
+# SDA: GP7
 
 from machine import Pin, I2C, SoftI2C
 from bmp085 import BMP180

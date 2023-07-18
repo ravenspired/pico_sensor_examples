@@ -1,10 +1,17 @@
-#Code for running the BMP180 sensor
+# Code to get the pressure, temperature, and altitude from the BMP180 sensor.
+# This code gets these values from one sensor and prints them on the screen.
+
+# Sensor: BMP180
+# VIN: 3.3V
+# GND: GND
+# SCL: GP2
+# SDA: GP3
 
 from machine import Pin, I2C, SoftI2C
 from bmp085 import BMP180
 import time
 
-i2c = SoftI2C(sda = Pin(5), scl = Pin(4), freq = 100000) #i2c detains
+i2c = SoftI2C(sda = Pin(3), scl = Pin(2), freq = 100000) 
 
 bmp = BMP180(i2c)        
 bmp.oversample = 2

@@ -1,8 +1,31 @@
+# Code to get the CO2 PPM from the MH-Z19B sensor, and change the auto calibration sensor if needed. 
+# This code sets up 2 sensors, disables automatic calibration, and then reads the CO2 PPM from each sensor.
+
+# Sensor Pinout
+# Wire 0: Yellow: NC
+# Wire 1: Green: TX
+# Wire 2: Blue: RX
+# Wire 3: Red: VCC
+# Wire 4: Black: GND
+# Wire 5: White: NC
+# Wire 6: Brown: NC
+
+# Sensor 1: MH-Z19B:
+# UART 0
+# TX: GP0 (Blue Wire)
+# RX: GP1 (Green Wire)
+
+# Sensor 2: MH-Z19B:
+# UART 1
+# TX: GP4 (Blue Wire)
+# RX: GP5 (Green Wire)
+
+
 from machine import UART
 import time
 from machine import Pin
 
-# this class measures CO2 with up to 2 MH-Z19B sensors
+
 class MHZ19BSensor:
 
     # initializes a new instance
