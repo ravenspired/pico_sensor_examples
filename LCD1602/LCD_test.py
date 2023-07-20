@@ -1,7 +1,8 @@
+
 from machine import Pin
 from gpio_lcd import GpioLcd
- 
 import time
+ 
 # Create the LCD object
 lcd = GpioLcd(rs_pin=Pin(16),
               enable_pin=Pin(17),
@@ -10,18 +11,29 @@ lcd = GpioLcd(rs_pin=Pin(16),
               d6_pin=Pin(20),
               d7_pin=Pin(21),
               num_lines=2, num_columns=16)
+
+#turn on led on pin 22 on pico then turn it off after 1 second
+led = Pin(22, Pin.OUT)
+
+def backlight_on():
+    led.value(1)
+    
+
+def backlight_off():
+    led.value(0)
  
 # #The following line of codes should be tested one by one according to your needs
 #
 # #1. To print a string to the LCD, you can use
-lcd.putstr('circuitschools.')
-time.sleep(5)
-print("LCD1602 test completed")
+backlight_on()
+lcd.putstr('It\'s working!')
 # #2. Now, to clear the display.
 # lcd.clear()
 # #3. and to exactly position the cursor location
 # lcd.move_to(0,1)
-lcd.putstr('LCD16x2display')
+lcd.putstr('\nLCD16x2display')
+time.sleep(2)
+backlight_off()
 # # If you do not set the cursor position,
 # # the character will be displayed in the
 # # default cursor position starting from
