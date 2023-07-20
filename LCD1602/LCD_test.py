@@ -32,8 +32,8 @@ lcd.putstr('It\'s working!')
 # #3. and to exactly position the cursor location
 # lcd.move_to(0,1)
 lcd.putstr('\nLCD16x2display')
-time.sleep(2)
-backlight_off()
+time.sleep(200)
+#backlight_off()
 # # If you do not set the cursor position,
 # # the character will be displayed in the
 # # default cursor position starting from
