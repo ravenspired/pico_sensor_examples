@@ -43,8 +43,8 @@ print(os.listdir('/sd'))
 file = open("/sd/sample.csv","a")
 
 # Write sample text
-col = 10
-row = 200
+col = 100
+row = 2000
 line = ",".join(str(num) for num in generate_random_floats(col)) + "\n"
 for i in range(row):
     file.write(line)

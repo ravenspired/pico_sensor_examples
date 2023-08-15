@@ -22,18 +22,21 @@ def backlight_on():
 def backlight_off():
     led.value(0)
  
+
 # #The following line of codes should be tested one by one according to your needs
 #
 # #1. To print a string to the LCD, you can use
 backlight_on()
-lcd.putstr('It\'s working!')
+
+# lcd.putstr('It\'s working!')
 # #2. Now, to clear the display.
 # lcd.clear()
 # #3. and to exactly position the cursor location
 # lcd.move_to(0,1)
 lcd.putstr('\nLCD16x2display')
-time.sleep(200)
-#backlight_off()
+time.sleep(2)
+
+backlight_off()
 # # If you do not set the cursor position,
 # # the character will be displayed in the
 # # default cursor position starting from
@@ -63,3 +66,6 @@ time.sleep(200)
 # happy_face = bytearray([0x00,0x0A,0x00,0x04,0x00,0x11,0x0E,0x00])
 # lcd.custom_char(0, happy_face)
 # lcd.putchar(chr(0))
+
+
+print("end")
